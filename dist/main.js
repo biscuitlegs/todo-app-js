@@ -640,13 +640,43 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 
 /***/ }),
 
+/***/ "./src/date.js":
+/*!*********************!*\
+  !*** ./src/date.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getCurrentDate\": () => (/* binding */ getCurrentDate),\n/* harmony export */   \"formatDate\": () => (/* binding */ formatDate)\n/* harmony export */ });\nconst getCurrentDate = () => {\n    const date = new Date();\n    const [day, month, year] = [date.getDate(), date.getMonth()+1, date.getFullYear()];\n\n    return { day, month, year };\n};\n\nconst formatDate = (day, month, year) => {\n    return `${day}/${month}/${year}`;\n};\n\n\n\n\n//# sourceURL=webpack://todo-list/./src/date.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ \"./node_modules/bootstrap/dist/css/bootstrap.min.css\");\n\n\n\n//Test\nconst div = document.createElement(\"div\");\ndiv.classList.add(\"alert\", \"alert-primary\");\ndiv.textContent = \"Hello, World!\";\ndocument.body.appendChild(div);\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ \"./node_modules/bootstrap/dist/css/bootstrap.min.css\");\n/* harmony import */ var _todoItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todoItem */ \"./src/todoItem.js\");\n/* harmony import */ var _date__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./date */ \"./src/date.js\");\n/* harmony import */ var _priority__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./priority */ \"./src/priority.js\");\n\n\n\n\n\n\n\n\nconst { day, month, year } = (0,_date__WEBPACK_IMPORTED_MODULE_3__.getCurrentDate)();\n\nconst myTodo = (0,_todoItem__WEBPACK_IMPORTED_MODULE_2__.default)(\"Paint Shed\", \"Paint the shed a nice color\", (0,_date__WEBPACK_IMPORTED_MODULE_3__.formatDate)(day, month, year), (0,_priority__WEBPACK_IMPORTED_MODULE_4__.default)(\"Medium\"));\n\nconsole.log(myTodo.getPriority().getImportance());\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/priority.js":
+/*!*************************!*\
+  !*** ./src/priority.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Priority = (importance) => {\n    let priorityImportance = importance;\n\n    const getImportance = () => priorityImportance;\n    const setImportance = (importance) => priorityImportance = importance;\n\n    return { getImportance, setImportance };\n};\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Priority);\n\n//# sourceURL=webpack://todo-list/./src/priority.js?");
+
+/***/ }),
+
+/***/ "./src/todoItem.js":
+/*!*************************!*\
+  !*** ./src/todoItem.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst TodoItem = (title, description, dueDate, priority) => {\n    let todoTitle = title;\n    let todoDescription = description;\n    let todoDueDate = dueDate;\n    let todoPriority = priority;\n\n    const getTitle = () => title;\n    const getDescription = () => description;\n    const getDueDate = () => dueDate;\n    const getPriority = () => priority;\n\n    const setTitle = (title) => todoTitle = title;\n    const setDescription = (description) => todoDescription = description;\n    const setDueDate = (dueDate) => todoDueDate = dueDate;\n    const setPriority = (priority) => todoPriority = priority;\n\n    return {\n        getTitle,\n        getDescription,\n        getDueDate,\n        getPriority,\n        setTitle,\n        setDescription,\n        setDueDate,\n        setPriority\n    };\n};\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TodoItem);\n\n//# sourceURL=webpack://todo-list/./src/todoItem.js?");
 
 /***/ })
 

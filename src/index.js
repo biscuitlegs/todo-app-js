@@ -1,8 +1,13 @@
 import Bootstrap from "bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TodoItem from "./todoItem";
+import { getCurrentDate, formatDate } from "./date";
+import Priority from "./priority";
 
-//Test
-const div = document.createElement("div");
-div.classList.add("alert", "alert-primary");
-div.textContent = "Hello, World!";
-document.body.appendChild(div);
+
+
+const { day, month, year } = getCurrentDate();
+
+const myTodo = TodoItem("Paint Shed", "Paint the shed a nice color", formatDate(day, month, year), Priority("Medium"));
+
+console.log(myTodo.getPriority().getImportance());
