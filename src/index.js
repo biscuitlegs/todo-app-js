@@ -10,12 +10,18 @@ import * as DisplayInitializer from "./display/initialize";
 
 const { day, month, year } = getCurrentDate();
 
-const myTodoItem = TodoItem("Paint Shed", "Paint the shed a nice color", formatDate(day, month, year), Priority("Medium"));
+const paintShedItem = TodoItem("Paint Shed", "Paint the shed a nice color", formatDate(day, month, year), Priority("Medium"));
 
-const myTodoProject = TodoProject("Renovate Garden");
-myTodoProject.addTodoItem(myTodoItem);
+const gardenProject = TodoProject("Renovate Garden");
+gardenProject.addTodoItem(paintShedItem);
 
-TodoProjectsController.addProject(myTodoProject);
+const vaccumItem = TodoItem("Vaccum House", "Hoover up all those crumbs!", formatDate(day, month, year), Priority("Low"));
+
+const cleaningProject = TodoProject("Clean House");
+cleaningProject.addTodoItem(vaccumItem);
+
+TodoProjectsController.addProject(gardenProject);
+TodoProjectsController.addProject(cleaningProject);
 
 
 DisplayInitializer.initializeLayout();
