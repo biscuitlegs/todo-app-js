@@ -5,6 +5,9 @@ import { getCurrentDate, formatDate } from "./date";
 import Priority from "./priority";
 import TodoProject from "./todoProject";
 
+import initialize from "./display/initialize";
+initialize();
+
 
 
 const { day, month, year } = getCurrentDate();
