@@ -1,11 +1,32 @@
-const Priority = (importance) => {
-    let priorityImportance = importance;
+const highPriority = () => {
+    const priorityColor = "#dc3545";
 
-    const getImportance = () => priorityImportance;
-    const setImportance = (importance) => priorityImportance = importance;
+    const getColor = () => priorityColor;
 
-    return { getImportance, setImportance };
+    return {
+        getColor
+    };
+};
+
+const mediumPriority = () => {
+    const priorityColor = "#ffc107";
+
+    const getColor = () => priorityColor;
+
+    return {
+        getColor
+    };
+};
+
+const lowPriority = () => {
+    const priorityColor = "#198754";
+
+    const getColor = () => priorityColor;
+
+    return {
+        getColor
+    };
 };
 
 
-export default Priority;
+export { highPriority, mediumPriority, lowPriority };

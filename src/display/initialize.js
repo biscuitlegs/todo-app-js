@@ -34,7 +34,7 @@ function setProjectDisplay(project) {
     projectDisplay.innerHTML = "";
 
     const title = document.createElement("h1");
-    title.classList.add("text-center", "display-1");
+    title.classList.add("text-center", "display-5", "m-3");
     title.textContent = project.getTitle();
 
     projectDisplay.appendChild(title);
@@ -45,7 +45,9 @@ function setProjectDisplay(project) {
     project.getTodoItems().forEach(item => {
         const title = item.getTitle();
         const description = item.getDescription();
-        const accordionItem = createAccordionItem(title, description);
+        const date = item.getDueDate();
+        const priorityColor = item.getPriority().getColor();
+        const accordionItem = createAccordionItem(title, description, date, priorityColor);
 
 
         itemsAccordion.appendChild(accordionItem);
