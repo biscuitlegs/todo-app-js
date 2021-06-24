@@ -1,6 +1,7 @@
 import navbar from "./navbar";
 import main from "./main";
 import TodoProjectsController from "../todoProjectsController";
+import { createAccordion, createAccordionItem } from "./accordion";
 
 function initializeLayout() {
     document.body.appendChild(navbar);
@@ -31,6 +32,27 @@ function deactivateProjectsListItems() {
 function setProjectDisplay(project) {
     const projectDisplay = document.querySelector("#project-display");
     projectDisplay.innerHTML = "";
+
+    const title = document.createElement("h1");
+    title.classList.add("text-center", "display-1");
+    title.textContent = project.getTitle();
+
+    projectDisplay.appendChild(title);
+
+
+    const itemsAccordion = createAccordion("todoItemsAccordion");
+
+    project.getTodoItems().forEach(item => {
+        const title = item.getTitle();
+        const description = item.getDescription();
+        const accordionItem = createAccordionItem(title, description);
+
+
+        itemsAccordion.appendChild(accordionItem);
+    });
+
+
+    projectDisplay.appendChild(itemsAccordion);
 }
 
 

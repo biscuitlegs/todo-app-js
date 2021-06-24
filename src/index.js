@@ -17,8 +17,13 @@ gardenProject.addTodoItem(paintShedItem);
 
 const vaccumItem = TodoItem("Vaccum House", "Hoover up all those crumbs!", formatDate(day, month, year), Priority("Low"));
 
+const dusterItem = TodoItem("Dust cobwebs", "Get out the feather duster and clean out some cobwebs! Don't miss the corners!", formatDate(day, month, year), Priority("Medium"));
+
 const cleaningProject = TodoProject("Clean House");
 cleaningProject.addTodoItem(vaccumItem);
+cleaningProject.addTodoItem(dusterItem);
+
+
 
 TodoProjectsController.addProject(gardenProject);
 TodoProjectsController.addProject(cleaningProject);
