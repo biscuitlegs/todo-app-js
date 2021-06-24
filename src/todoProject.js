@@ -1,6 +1,9 @@
-const TodoProject = (todoItems) => {
+const TodoProject = (title, todoItems) => {
+    const projectTitle = title;
     const projectTodoItems = todoItems || [];
 
+    const getTitle = () => projectTitle;
+    const setTitle = (title) => projectTitle = title;
     const getTodoItems = () => projectTodoItems;
     const addTodoItem = (todoItem) => projectTodoItems.push(todoItem);
     const removeTodoItem = (todoItem) => {
@@ -10,10 +13,13 @@ const TodoProject = (todoItems) => {
     };
 
     return {
+        getTitle,
+        setTitle,
         getTodoItems,
         addTodoItem,
         removeTodoItem
     };
 };
+
 
 export default TodoProject;
