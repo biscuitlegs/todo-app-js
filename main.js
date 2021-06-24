@@ -650,13 +650,63 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/display/initialize.js":
+/*!***********************************!*\
+  !*** ./src/display/initialize.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navbar */ \"./src/display/navbar.js\");\n/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main */ \"./src/display/main.js\");\n\n\n\nfunction initialize() {\n    document.body.appendChild(_navbar__WEBPACK_IMPORTED_MODULE_0__.default);\n    document.body.appendChild(_main__WEBPACK_IMPORTED_MODULE_1__.default);\n}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (initialize);\n\n//# sourceURL=webpack://todo-list/./src/display/initialize.js?");
+
+/***/ }),
+
+/***/ "./src/display/main.js":
+/*!*****************************!*\
+  !*** ./src/display/main.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _projectsList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projectsList */ \"./src/display/projectsList.js\");\n/* harmony import */ var _projectDisplay__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projectDisplay */ \"./src/display/projectDisplay.js\");\n\n\n\nconst row = document.createElement(\"div\");\nrow.classList.add(\"row\", \"h-100\");\nrow.appendChild(_projectsList__WEBPACK_IMPORTED_MODULE_0__.default);\nrow.appendChild(_projectDisplay__WEBPACK_IMPORTED_MODULE_1__.default);\n\nconst main = document.createElement(\"main\");\nmain.style.height = \"100vh\";\n\nmain.appendChild(row);\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (main);\n\n//# sourceURL=webpack://todo-list/./src/display/main.js?");
+
+/***/ }),
+
+/***/ "./src/display/navbar.js":
+/*!*******************************!*\
+  !*** ./src/display/navbar.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst container = document.createElement(\"div\");\ncontainer.classList.add(\"container-fluid\");\n\nconst navbarBrand = document.createElement(\"a\");\nnavbarBrand.classList.add(\"navbar-brand\");\nnavbarBrand.setAttribute(\"href\", \"#\");\nnavbarBrand.textContent = \"Navbar\";\n\nconst navbarToggler = document.createElement(\"button\");\nnavbarToggler.classList.add(\"navbar-toggler\");\nnavbarToggler.setAttribute(\"type\", \"button\");\nnavbarToggler.setAttribute(\"data-bs-toggle\", \"collapse\");\nnavbarToggler.setAttribute(\"data-bs-target\", \"#navbarNav\");\nnavbarToggler.setAttribute(\"aria-controls\", \"navbarNav\");\nnavbarToggler.setAttribute(\"aria-expanded\", \"false\");\nnavbarToggler.setAttribute(\"aria-label\", \"Toggle navigation\");\n\nconst navbarTogglerIcon = document.createElement(\"span\");\nnavbarTogglerIcon.classList.add(\"navbar-toggler-icon\");\n\nconst navbarCollapse = document.createElement(\"div\");\nnavbarCollapse.classList.add(\"collapse\", \"navbar-collapse\");\nnavbarCollapse.setAttribute(\"id\", \"navbarNav\");\n\nconst navbarNav = document.createElement(\"ul\");\nnavbarNav.classList.add(\"navbar-nav\");\n\nconst navItemHome = document.createElement(\"li\");\nnavItemHome.classList.add(\"nav-item\");\n\nconst navLinkHome = document.createElement(\"a\");\nnavLinkHome.classList.add(\"nav-link\", \"active\");\nnavLinkHome.setAttribute(\"aria-current\", \"page\");\nnavLinkHome.setAttribute(\"href\", \"#\");\nnavLinkHome.textContent = \"Home\";\n\n\ncontainer.appendChild(navbarBrand);\ncontainer.appendChild(navbarToggler);\nnavbarToggler.appendChild(navbarTogglerIcon);\ncontainer.appendChild(navbarCollapse);\nnavbarCollapse.appendChild(navbarNav);\nnavbarNav.appendChild(navItemHome);\nnavItemHome.appendChild(navLinkHome);\n\n\nconst navbar = document.createElement(\"nav\");\nnavbar.classList.add(\"navbar\", \"navbar-expand-lg\", \"navbar-light\", \"bg-light\");\nnavbar.appendChild(container);\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (navbar);\n\n//# sourceURL=webpack://todo-list/./src/display/navbar.js?");
+
+/***/ }),
+
+/***/ "./src/display/projectDisplay.js":
+/*!***************************************!*\
+  !*** ./src/display/projectDisplay.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst projectDisplay = document.createElement(\"div\");\nprojectDisplay.classList.add(\"col\");\nprojectDisplay.innerHTML = \"Details about the selected project will show up here!\";\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (projectDisplay);\n\n//# sourceURL=webpack://todo-list/./src/display/projectDisplay.js?");
+
+/***/ }),
+
+/***/ "./src/display/projectsList.js":
+/*!*************************************!*\
+  !*** ./src/display/projectsList.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst projectsList = document.createElement(\"div\");\nprojectsList.classList.add(\"col-3\", \"border\");\nprojectsList.innerHTML = \"A list of projects will show up here!\";\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (projectsList);\n\n//# sourceURL=webpack://todo-list/./src/display/projectsList.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ \"./node_modules/bootstrap/dist/css/bootstrap.min.css\");\n/* harmony import */ var _todoItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todoItem */ \"./src/todoItem.js\");\n/* harmony import */ var _date__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./date */ \"./src/date.js\");\n/* harmony import */ var _priority__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./priority */ \"./src/priority.js\");\n/* harmony import */ var _todoProject__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./todoProject */ \"./src/todoProject.js\");\n\n\n\n\n\n\n\n\n\nconst { day, month, year } = (0,_date__WEBPACK_IMPORTED_MODULE_3__.getCurrentDate)();\n\nconst myTodo = (0,_todoItem__WEBPACK_IMPORTED_MODULE_2__.default)(\"Paint Shed\", \"Paint the shed a nice color\", (0,_date__WEBPACK_IMPORTED_MODULE_3__.formatDate)(day, month, year), (0,_priority__WEBPACK_IMPORTED_MODULE_4__.default)(\"Medium\"));\n\nconst myTodoProject = (0,_todoProject__WEBPACK_IMPORTED_MODULE_5__.default)();\nmyTodoProject.addTodoItem(myTodo);\nmyTodoProject.removeTodoItem(myTodo);\n\nconsole.log(myTodoProject.getTodoItems());\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ \"./node_modules/bootstrap/dist/css/bootstrap.min.css\");\n/* harmony import */ var _todoItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todoItem */ \"./src/todoItem.js\");\n/* harmony import */ var _date__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./date */ \"./src/date.js\");\n/* harmony import */ var _priority__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./priority */ \"./src/priority.js\");\n/* harmony import */ var _todoProject__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./todoProject */ \"./src/todoProject.js\");\n/* harmony import */ var _display_initialize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./display/initialize */ \"./src/display/initialize.js\");\n\n\n\n\n\n\n\n\n(0,_display_initialize__WEBPACK_IMPORTED_MODULE_6__.default)();\n\n\n\nconst { day, month, year } = (0,_date__WEBPACK_IMPORTED_MODULE_3__.getCurrentDate)();\n\nconst myTodo = (0,_todoItem__WEBPACK_IMPORTED_MODULE_2__.default)(\"Paint Shed\", \"Paint the shed a nice color\", (0,_date__WEBPACK_IMPORTED_MODULE_3__.formatDate)(day, month, year), (0,_priority__WEBPACK_IMPORTED_MODULE_4__.default)(\"Medium\"));\n\nconst myTodoProject = (0,_todoProject__WEBPACK_IMPORTED_MODULE_5__.default)();\nmyTodoProject.addTodoItem(myTodo);\nmyTodoProject.removeTodoItem(myTodo);\n\nconsole.log(myTodoProject.getTodoItems());\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ }),
 
