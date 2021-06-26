@@ -2,6 +2,7 @@ import navbar from "./navbar";
 import main from "./main";
 import TodoProjectsController from "../todoProjectsController";
 import { createAccordion, createAccordionItem } from "./accordion";
+import TodoProject from "../todoProject";
 
 function initializeLayout() {
     document.body.appendChild(navbar);
@@ -10,6 +11,8 @@ function initializeLayout() {
 
 function populateProjectsList() {
     const list = document.querySelector("#projects-list ul");
+    clearProjectsList(list);
+
     const projects = TodoProjectsController.getProjects();
     projects.forEach(project => {
         const listItem = document.createElement("button");
@@ -22,6 +25,10 @@ function populateProjectsList() {
         });
         list.appendChild(listItem);
     });
+}
+
+function clearProjectsList(list) {
+    list.innerHTML = "";
 }
 
 function deactivateProjectsListItems() {
@@ -57,5 +64,16 @@ function setProjectDisplay(project) {
     projectDisplay.appendChild(itemsAccordion);
 }
 
+function initializeNewProjectForm() {
+    const projectSubmit = document.querySelector("#new-project-submit");
 
-export { initializeLayout, populateProjectsList };
+    projectSubmit.addEventListener("click", () => {
+        const projectTitle = document.querySelector("#new-project-title").value;
+        const newProject = TodoProject(projectTitle);
+        TodoProjectsController.addProject(newProject);
+        populateProjectsList();
+    });
+}
+
+
+export { initializeLayout, populateProjectsList, initializeNewProjectForm };

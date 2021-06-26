@@ -31,3 +31,4 @@ TodoProjectsController.addProject(cleaningProject);
 
 DisplayInitializer.initializeLayout();
 DisplayInitializer.populateProjectsList();
+DisplayInitializer.initializeNewProjectForm();

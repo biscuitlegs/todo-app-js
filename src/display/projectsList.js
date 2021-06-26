@@ -1,14 +1,42 @@
+import newProjectForm from "./newProjectForm";
+
 const projectsList = document.createElement("div");
 projectsList.classList.add("col-3", "border", "p-0");
 projectsList.setAttribute("id", "projects-list");
 
+const header = document.createElement("div");
+header.classList.add("row", "align-items-center", "mb-1");
+
+const headerLeft = document.createElement("div");
+headerLeft.classList.add("col-8", "d-flex", "justify-content-center");
+
+const headerRight = document.createElement("div");
+headerRight.classList.add("col", "d-flex", "justify-content-center");
+
 const title = document.createElement("h2");
-title.classList.add("text-center", "m-2")
+title.classList.add("text-center")
 title.textContent = "Projects";
-projectsList.appendChild(title);
+
+const newProjectButton = document.createElement("button");
+newProjectButton.classList.add("btn", "btn-success");
+newProjectButton.setAttribute("type", "button");
+newProjectButton.setAttribute("data-bs-toggle", "collapse");
+newProjectButton.setAttribute("data-bs-target", "#new-project-form");
+newProjectButton.setAttribute("id", "new-project-button");
+newProjectButton.textContent = "New";
 
 const list = document.createElement("ul");
 list.classList.add("list-group");
+
+
+headerLeft.appendChild(title);
+headerRight.appendChild(newProjectButton);
+
+header.appendChild(headerLeft);
+header.appendChild(headerRight);
+
+projectsList.appendChild(header);
+projectsList.appendChild(newProjectForm);
 projectsList.appendChild(list);
 
 
