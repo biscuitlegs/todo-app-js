@@ -5,20 +5,20 @@ projectsList.classList.add("col-3", "border", "p-0");
 projectsList.setAttribute("id", "projects-list");
 
 const header = document.createElement("div");
-header.classList.add("row", "align-items-center", "mb-1");
+header.classList.add("row", "align-items-center", "mb-1", "me-lg-1");
 
 const headerLeft = document.createElement("div");
-headerLeft.classList.add("col-8", "d-flex", "justify-content-center");
+headerLeft.classList.add("col-lg-8");
 
 const headerRight = document.createElement("div");
-headerRight.classList.add("col", "d-flex", "justify-content-center");
+headerRight.classList.add("col-lg");
 
 const title = document.createElement("h2");
-title.classList.add("text-center")
+title.classList.add("text-center");
 title.textContent = "Projects";
 
 const newProjectButton = document.createElement("button");
-newProjectButton.classList.add("btn", "btn-success");
+newProjectButton.classList.add("btn", "btn-success", "w-100");
 newProjectButton.setAttribute("type", "button");
 newProjectButton.setAttribute("data-bs-toggle", "collapse");
 newProjectButton.setAttribute("data-bs-target", "#new-project-form");
