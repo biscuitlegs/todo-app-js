@@ -7,6 +7,7 @@ import TodoProject from "./todoProject";
 import TodoProjectsController from "./todoProjectsController";
 import * as DisplayInitializer from "./display/initialize";
 import seedDefaultProjects from "./seed/seed";
+import "./display/mobile.css";
 
 
 

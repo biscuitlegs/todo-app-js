@@ -1,5 +1,5 @@
 const form = document.createElement("div");
-form.classList.add("m-3", "collapse");
+form.classList.add("m-3", "collapse", "mb-4");
 form.setAttribute("id", "new-project-form");
 
 const title = document.createElement("input");

@@ -1,7 +1,8 @@
 import newProjectForm from "./newProjectForm";
 
 const projectsList = document.createElement("div");
-projectsList.classList.add("col-3", "border", "p-0");
+projectsList.style.minWidth = "250px";
+projectsList.classList.add("col-sm-3", "border", "p-0", "pt-3");
 projectsList.setAttribute("id", "projects-list");
 
 const header = document.createElement("div");
@@ -18,7 +19,7 @@ title.classList.add("text-center");
 title.textContent = "Projects";
 
 const newProjectButton = document.createElement("button");
-newProjectButton.classList.add("btn", "btn-success", "w-100");
+newProjectButton.classList.add("btn", "btn-success", "w-100", "my-3");
 newProjectButton.setAttribute("type", "button");
 newProjectButton.setAttribute("data-bs-toggle", "collapse");
 newProjectButton.setAttribute("data-bs-target", "#new-project-form");

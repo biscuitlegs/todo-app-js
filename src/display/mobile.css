@@ -1,0 +1,9 @@
+main > .row {
+    height: 100vh;
+}
+
+@media screen and (max-width: 575px) {
+    main > .row {
+        height: auto;
+    }
+}

@@ -15,9 +15,11 @@ function seedDefaultProjects() {
 
     //Cleaning Project
     const vaccumItem = TodoItem("Vaccum Living Room", "Magna eu exercitation fugiat qui. Magna mollit sint duis eu ea adipisicing aliqua irure.", formatDate(day, month, year), lowPriority());
+    const mopItem = TodoItem("Mop the garage floor", "Quis Lorem in id eiusmod elit ipsum labore amet et consectetur nisi ad. Aute non cillum sunt deserunt sit. Do reprehenderit ad ad in culpa. Veniam voluptate do ad labore aliquip commodo. Enim minim nulla dolore ipsum cillum consectetur minim cillum ut exercitation aute.", formatDate(day, month, year), lowPriority());
     const dusterItem = TodoItem("Dust cobwebs", "Sint deserunt anim voluptate velit sint in dolore anim amet proident ipsum proident id laborum. Ut tempor culpa aute velit anim voluptate laborum pariatur cupidatat occaecat consequat occaecat laboris duis. Commodo enim nulla veniam ut dolore deserunt voluptate in veniam. Dolor tempor est mollit exercitation duis elit dolor.", formatDate(day, month, year), highPriority());
     const cleaningProject = TodoProject("Clean House");
     cleaningProject.addTodoItem(vaccumItem);
+    cleaningProject.addTodoItem(mopItem);
     cleaningProject.addTodoItem(dusterItem);
     
 

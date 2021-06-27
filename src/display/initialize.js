@@ -57,7 +57,7 @@ function setProjectDisplayDefault(display) {
 
     const subHeading = document.createElement("h3");
     subHeading.classList.add("fs-2", "w-100", "p-3", "text-center", "text-secondary", "fw-light");
-    subHeading.textContent = "Click on a project in the list to the left to see all of the tasks associated with that project.";
+    subHeading.textContent = "Click on a project in the list to see all of the tasks associated with that project.";
 
     display.innerHTML = "";
     container.appendChild(heading);
