@@ -5,6 +5,8 @@ import { createAccordion, createAccordionItem } from "./accordion";
 import TodoProject from "../todoProject";
 import ProjectsController from "../todoProjectsController";
 
+let selectedProject;
+
 function initializeLayout() {
     document.body.appendChild(navbar);
     document.body.appendChild(main);
@@ -30,6 +32,7 @@ function populateProjectsList() {
             deactivateProjectsListItems();
             e.target.classList.add("active");
             setProjectDisplay(project);
+            selectedProject = project;
         });
 
         listItem.appendChild(deleteButton);
@@ -43,7 +46,9 @@ function initializeProjectDeleteButton(button, project, projectsController) {
         const projectDisplay = document.querySelector("#project-display");
         projectsController.removeProject(project);
         populateProjectsList();
-        setProjectDisplayDefault(projectDisplay);
+        if (selectedProject === project) {
+            setProjectDisplayDefault(projectDisplay);
+        }
     });
 }
 
