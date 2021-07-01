@@ -1,7 +1,7 @@
 const highPriority = () => {
-    const priorityColor = "#dc3545";
+    const PRIORITY_COLOR = "#dc3545";
 
-    const getColor = () => priorityColor;
+    const getColor = () => PRIORITY_COLOR;
 
     return {
         getColor
@@ -9,9 +9,9 @@ const highPriority = () => {
 };
 
 const mediumPriority = () => {
-    const priorityColor = "#ffc107";
+    const PRIORITY_COLOR = "#ffc107";
 
-    const getColor = () => priorityColor;
+    const getColor = () => PRIORITY_COLOR;
 
     return {
         getColor
@@ -19,9 +19,9 @@ const mediumPriority = () => {
 };
 
 const lowPriority = () => {
-    const priorityColor = "#198754";
+    const PRIORITY_COLOR = "#198754";
 
-    const getColor = () => priorityColor;
+    const getColor = () => PRIORITY_COLOR;
 
     return {
         getColor

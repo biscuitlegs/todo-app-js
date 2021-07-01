@@ -9,9 +9,8 @@ import * as DisplayInitializer from "./display/initialize";
 import seedDefaultProjects from "./seed/seed";
 import "./display/mobile.css";
 
-
-
 seedDefaultProjects();
 DisplayInitializer.initializeLayout();
-DisplayInitializer.populateProjectsList();
+DisplayInitializer.initializeProjectsList();
+DisplayInitializer.setProjectDisplayToDefault();
 DisplayInitializer.initializeNewProjectForm();
