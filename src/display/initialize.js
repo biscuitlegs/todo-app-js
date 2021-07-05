@@ -103,12 +103,35 @@ function setProjectDisplay(project) {
     title.textContent = project.getTitle();
     projectDisplay.appendChild(title);
 
+    const newItemFormButton = createNewItemFormCollapseButton();
+    projectDisplay.appendChild(newItemFormButton);
+
     const newItemForm = createNewItemForm();
     projectDisplay.appendChild(newItemForm);
     initializeNewItemFormSubmit(project);
 
     const itemsAccordion = createTodoItemsAccordion(project.getTodoItems());
     projectDisplay.appendChild(itemsAccordion);
+}
+
+function createNewItemFormCollapseButton() {
+    const row = document.createElement("div");
+    row.classList.add("row");
+
+    const column = document.createElement("div");
+    column.classList.add("col-lg-3");
+
+    const button = document.createElement("button");
+    button.setAttribute("id", "new-item-form-collapse-button");
+    button.setAttribute("data-bs-toggle", "collapse");
+    button.setAttribute("data-bs-target", "#new-item-form");
+    button.textContent = "New Task";
+    button.classList.add("btn", "btn-success", "mb-4", "w-100");
+
+    column.appendChild(button);
+    row.appendChild(column);
+
+    return row;
 }
 
 function createTodoItemsAccordion(todoItems) {
