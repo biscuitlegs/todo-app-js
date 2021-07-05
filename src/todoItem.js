@@ -26,5 +26,15 @@ const TodoItem = (title, description, dueDate, priority) => {
     };
 };
 
+function findTodoItemByTitle(title) {
+    let foundItem;
+    selectedProject.getTodoItems().forEach(item => {
+        if (item.getTitle() === title) foundItem = item;
+    });
+
+    return foundItem;
+}
+
 
 export default TodoItem;
+export { findTodoItemByTitle };

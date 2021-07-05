@@ -8,6 +8,7 @@ import createNewItemForm from "./newItemForm";
 import TodoItem from "../todoItem";
 import * as Priority from "../priority";
 import { dayMonthYearFromDateInput } from "../date";
+import findTodoItemByTitle from "../todoItem";
 
 let selectedProject;
 
@@ -43,11 +44,11 @@ function createProjectsListItem(text) {
 
 function initializeProjectsListItem(item, project) {
     item.addEventListener("click", (e) => {
+        selectedProject = project;
         const listItems = document.querySelectorAll("#projects-list ul button");
         removeActiveStyling(listItems);
         e.target.classList.add("active");
         setProjectDisplay(project);
-        selectedProject = project;
     });
 }
 
@@ -112,6 +113,35 @@ function setProjectDisplay(project) {
 
     const itemsAccordion = createTodoItemsAccordion(project.getTodoItems());
     projectDisplay.appendChild(itemsAccordion);
+
+    initializeTodoItemDeleteButtons(selectedProject);
+}
+
+function initializeTodoItemDeleteButtons(currentProject) {
+    const todoItemsAccordion = document.querySelector("#todo-items-accordion");
+    const titles = document.querySelectorAll(".accordion-item-title");
+    const deleteButtons = document.querySelectorAll(".accordion-item-delete");
+    const accordionItems = document.querySelectorAll(".accordion-item");
+
+    for (let i = 0; i < titles.length; i++) {
+        const accordionItem = accordionItems[i];
+        const deleteButton = deleteButtons[i];
+        const title = titles[i];
+       
+        deleteButton.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const foundItem = findTodoItemByTitle(title.textContent);
+            currentProject.removeTodoItem(foundItem);
+            todoItemsAccordion.removeChild(accordionItem);
+        });
+    }
+}
+
+function resetTodoItemDeleteButtons() {
+    const deleteButtons = document.querySelectorAll(".accordion-item-delete");
+    deleteButtons.forEach(button => {
+        button = button.replaceWith(button.cloneNode(true));
+    });
 }
 
 function createNewItemFormCollapseButton() {
@@ -180,6 +210,9 @@ function initializeNewItemFormSubmit(project) {
             dateValue,
             priorityValue().getColor());
         todoItemsAccordion.appendChild(newAccordionItem);
+
+        resetTodoItemDeleteButtons();
+        initializeTodoItemDeleteButtons(selectedProject);
     });
 }
 

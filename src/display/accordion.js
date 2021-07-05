@@ -1,3 +1,5 @@
+import { Button } from "bootstrap";
+
 function createAccordion(name) {
     const accordion = document.createElement("div");
     accordion.classList.add("accordion");
@@ -27,9 +29,8 @@ function createAccordionItem(name, body, dueDate, color) {
     accordionButtonPriority.style.color = color;
     accordionButton.appendChild(accordionButtonPriority);
 
-
     const accordionButtonTitle = document.createElement("span");
-    accordionButtonTitle.classList.add("fw-bold", "me-2");
+    accordionButtonTitle.classList.add("fw-bold", "me-2", "accordion-item-title");
     accordionButtonTitle.textContent = name;
     accordionButton.appendChild(accordionButtonTitle);
 
@@ -38,11 +39,25 @@ function createAccordionItem(name, body, dueDate, color) {
     accordionButtonDate.textContent = dueDate;
     accordionButton.appendChild(accordionButtonDate);
 
+    const accordionButtonDeleteButton = document.createElement("button");
+    accordionButtonDeleteButton.classList.add("btn", "btn-sm", "btn-danger", "mx-3", "accordion-item-delete");
+    accordionButtonDeleteButton.textContent = "Delete";
+
     const accordionButtonDetails = document.createElement("div");
-    accordionButtonDetails.classList.add("d-flex", "justify-content-start", "align-items-center");
-    accordionButtonDetails.appendChild(accordionButtonPriority);
-    accordionButtonDetails.appendChild(accordionButtonDate);
-    accordionButtonDetails.appendChild(accordionButtonTitle);
+    accordionButtonDetails.classList.add("d-flex", "justify-content-between", "align-items-center", "w-100");
+
+    const accordionButtonDetailsLeft = document.createElement("div");
+    accordionButtonDetailsLeft.classList.add("d-flex", "align-items-center");
+    accordionButtonDetailsLeft.appendChild(accordionButtonPriority);
+    accordionButtonDetailsLeft.appendChild(accordionButtonDate);
+    accordionButtonDetailsLeft.appendChild(accordionButtonTitle);
+    
+    const accordionButtonDetailsRight = document.createElement("div");
+    accordionButtonDetailsRight.classList.add("d-flex", "align-items-center");
+    accordionButtonDetailsRight.appendChild(accordionButtonDeleteButton);
+
+    accordionButtonDetails.appendChild(accordionButtonDetailsLeft);
+    accordionButtonDetails.appendChild(accordionButtonDetailsRight);
 
     accordionButton.appendChild(accordionButtonDetails);
 
