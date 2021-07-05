@@ -5,9 +5,13 @@ const getCurrentDate = () => {
     return { day, month, year };
 };
 
-const formatDate = (day, month, year) => {
-    return `${day}/${month}/${year}`;
+const formatDate = (year, month, day) => {
+    return `0${day}-0${month}-${year}`;
 };
 
+function dayMonthYearFromDateInput(string) {
+    return string.split("-").reverse().join("-");
+}
 
-export { getCurrentDate, formatDate };
+
+export { getCurrentDate, formatDate, dayMonthYearFromDateInput };

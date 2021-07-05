@@ -4,6 +4,10 @@ import TodoProjectsController from "../todoProjectsController";
 import { createAccordion, createAccordionItem } from "./accordion";
 import TodoProject from "../todoProject";
 import ProjectsController from "../todoProjectsController";
+import createNewItemForm from "./newItemForm";
+import TodoItem from "../todoItem";
+import * as Priority from "../priority";
+import { dayMonthYearFromDateInput } from "../date";
 
 let selectedProject;
 
@@ -97,12 +101,20 @@ function setProjectDisplay(project) {
     const title = document.createElement("h1");
     title.classList.add("text-center", "display-5", "m-3");
     title.textContent = project.getTitle();
-
     projectDisplay.appendChild(title);
 
-    const itemsAccordion = createAccordion("todoItemsAccordion");
+    const newItemForm = createNewItemForm();
+    projectDisplay.appendChild(newItemForm);
+    initializeNewItemFormSubmit(project);
 
-    project.getTodoItems().forEach(item => {
+    const itemsAccordion = createTodoItemsAccordion(project.getTodoItems());
+    projectDisplay.appendChild(itemsAccordion);
+}
+
+function createTodoItemsAccordion(todoItems) {
+    const itemsAccordion = createAccordion("todo-items-accordion");
+
+    todoItems.forEach(item => {
         const title = item.getTitle();
         const description = item.getDescription();
         const date = item.getDueDate();
@@ -112,7 +124,40 @@ function setProjectDisplay(project) {
         itemsAccordion.appendChild(accordionItem);
     });
 
-    projectDisplay.appendChild(itemsAccordion);
+    return itemsAccordion;
+}
+
+function initializeNewItemFormSubmit(project) {
+    const submitButton = document.querySelector("#new-item-submit");
+
+    submitButton.addEventListener("click", () => {
+        const title = document.querySelector("#new-item-title");
+        const description = document.querySelector("#new-item-description");
+        const date = document.querySelector("#new-item-date");
+        const priority = document.querySelector("#new-item-priority");
+
+        const titleValue = title.value;
+        const descriptionValue = description.value;
+        const dateValue = dayMonthYearFromDateInput(date.value);
+        const priorityValue = Priority.getPriorityFromName(priority.value);
+
+        const newTodoItem = TodoItem(
+            titleValue,
+            descriptionValue,
+            dateValue,
+            priorityValue()
+        );
+
+        project.addTodoItem(newTodoItem);
+
+        const todoItemsAccordion = document.querySelector("#todo-items-accordion");
+        const newAccordionItem = createAccordionItem(
+            titleValue,
+            descriptionValue,
+            dateValue,
+            priorityValue().getColor());
+        todoItemsAccordion.appendChild(newAccordionItem);
+    });
 }
 
 function initializeNewProjectForm() {
