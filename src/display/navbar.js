@@ -3,7 +3,7 @@ container.classList.add("container-fluid");
 
 const navbarBrand = document.createElement("a");
 navbarBrand.classList.add("navbar-brand");
-navbarBrand.setAttribute("href", "#");
+navbarBrand.setAttribute("href", "https://github.com/biscuitlegs/todo-app-js");
 navbarBrand.textContent = "Todo App";
 
 const navbarToggler = document.createElement("button");
@@ -31,7 +31,7 @@ navItemGithub.classList.add("nav-item");
 const navLinkGithub = document.createElement("a");
 navLinkGithub.classList.add("nav-link", "active");
 navLinkGithub.setAttribute("aria-current", "page");
-navLinkGithub.setAttribute("href", "#");
+navLinkGithub.setAttribute("href", "https://github.com/biscuitlegs/todo-app-js");
 const navLinkGithubIcon = document.createElement("i");
 navLinkGithubIcon.classList.add("bi", "bi-github", "fs-5");
 navLinkGithub.appendChild(navLinkGithubIcon);

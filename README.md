@@ -1,5 +1,7 @@
 # Todo App JS
 
+## [View it live!](https://biscuitlegs.github.io/todo-app-js/)
+
 ## About
 **Heads up -- This app has no backend so your projects and tasks will be deleted once you close the browser page.**
 
