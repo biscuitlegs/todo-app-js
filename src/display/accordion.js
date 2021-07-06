@@ -2,7 +2,7 @@ import { Button } from "bootstrap";
 
 function createAccordion(name) {
     const accordion = document.createElement("div");
-    accordion.classList.add("accordion");
+    accordion.classList.add("accordion", "d-flex", "flex-column", "pe-4");
     accordion.setAttribute("id", name);
 
     return accordion;

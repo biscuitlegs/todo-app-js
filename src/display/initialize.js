@@ -11,6 +11,8 @@ import { dayMonthYearFromDateInput } from "../date";
 import findTodoItemByTitle from "../todoItem";
 
 let selectedProject;
+const COMPLETED_ITEM_BUTTON_COLOR = "#d9ffed";
+const COMPLETED_ITEM_DESCRIPTION_COLOR = "#ebfff5";
 
 function initializeLayout() {
     document.body.appendChild(navbar);
@@ -122,17 +124,20 @@ function initializeTodoItemDeleteButtons(currentProject) {
     const titles = document.querySelectorAll(".accordion-item-title");
     const deleteButtons = document.querySelectorAll(".accordion-item-delete");
     const accordionItems = document.querySelectorAll(".accordion-item");
+    const accordionItemsContainer = document.querySelector("#accordion-items-container");
 
     for (let i = 0; i < titles.length; i++) {
         const accordionItem = accordionItems[i];
         const deleteButton = deleteButtons[i];
         const title = titles[i];
+        const accordionItemWrapper = accordionItem.parentElement;
        
         deleteButton.addEventListener("click", (e) => {
             e.stopPropagation();
             const foundItem = findTodoItemByTitle(title.textContent);
             currentProject.removeTodoItem(foundItem);
-            todoItemsAccordion.removeChild(accordionItem);
+            
+            accordionItemsContainer.removeChild(accordionItemWrapper);
         });
     }
 }
@@ -166,18 +171,76 @@ function createNewItemFormCollapseButton() {
 
 function createTodoItemsAccordion(todoItems) {
     const itemsAccordion = createAccordion("todo-items-accordion");
-
+    const row = document.createElement("div");
+    row.classList.add("d-flex", "flex-column");
+    row.setAttribute("id", "accordion-items-container");
+    
     todoItems.forEach(item => {
+        const container = document.createElement("div");
+        container.classList.add("d-flex");
+
+        const checkbox = createCheckbox();
+        checkbox.classList.add("align-self-start", "mt-4");
         const title = item.getTitle();
         const description = item.getDescription();
         const date = item.getDueDate();
         const priorityColor = item.getPriority().getColor();
         const accordionItem = createAccordionItem(title, description, date, priorityColor);
+        accordionItem.classList.add("w-100");
+        
+        initializeCheckbox(checkbox, item, accordionItem);
 
-        itemsAccordion.appendChild(accordionItem);
+        if (item.getCompleted()) {
+            const accordionItemButton = accordionItem.firstElementChild.firstElementChild;
+            const accordionItemDescription = accordionItem.lastElementChild;
+
+            checkbox.setAttribute("checked", "true");
+            accordionItemButton.style.backgroundColor = COMPLETED_ITEM_BUTTON_COLOR;
+            accordionItemDescription.style.backgroundColor = COMPLETED_ITEM_DESCRIPTION_COLOR;
+        }
+        
+        container.appendChild(checkbox);
+        container.appendChild(accordionItem);
+        row.appendChild(container);
     });
 
+    itemsAccordion.appendChild(row);
+
     return itemsAccordion;
+}
+
+function createCheckbox() {
+    const checkbox = document.createElement("input");
+    checkbox.classList.add("mx-3");
+    checkbox.setAttribute("type", "checkbox");
+
+    return checkbox;
+}
+
+function initializeCheckbox(checkbox, todoItem, accordionItem) {
+    checkbox.addEventListener("click", () => {
+        const accordionItemButton = accordionItem.firstElementChild.firstElementChild;
+        const accordionItemDescription = accordionItem.lastElementChild;
+
+        if (todoItem.getCompleted()) {
+            todoItem.setCompleted(false);
+        } else {
+            todoItem.setCompleted(true);
+        }
+        
+        if (!accordionItemButton.style.backgroundColor) {
+            accordionItemButton.style.backgroundColor = COMPLETED_ITEM_BUTTON_COLOR;
+        } else {
+            accordionItemButton.style.backgroundColor = "";
+        }
+
+        if (!accordionItemDescription.style.backgroundColor) {
+            accordionItemDescription.style.backgroundColor = COMPLETED_ITEM_DESCRIPTION_COLOR;
+        } else {
+            accordionItemDescription.style.backgroundColor = "";
+        }
+        
+    });
 }
 
 function initializeNewItemFormSubmit(project) {
@@ -203,14 +266,24 @@ function initializeNewItemFormSubmit(project) {
 
         project.addTodoItem(newTodoItem);
 
-        const todoItemsAccordion = document.querySelector("#todo-items-accordion");
+        const todoItemsContainer = document.querySelector("#accordion-items-container");
+        const newItemWrapper = document.createElement("div");
+        newItemWrapper.classList.add("d-flex");
+        
         const newAccordionItem = createAccordionItem(
             titleValue,
             descriptionValue,
             dateValue,
             priorityValue().getColor());
-        todoItemsAccordion.appendChild(newAccordionItem);
+        newAccordionItem.classList.add("w-100");
 
+        const checkbox = createCheckbox();
+
+        newItemWrapper.appendChild(checkbox);
+        newItemWrapper.appendChild(newAccordionItem);
+        todoItemsContainer.appendChild(newItemWrapper);
+
+        initializeCheckbox(checkbox, newTodoItem, newAccordionItem);
         resetTodoItemDeleteButtons();
         initializeTodoItemDeleteButtons(selectedProject);
     });

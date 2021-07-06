@@ -47,7 +47,7 @@ navItemGithub.appendChild(navLinkGithub);
 
 
 const navbar = document.createElement("nav");
-navbar.classList.add("navbar", "navbar-expand-lg", "navbar-light", "bg-light");
+navbar.classList.add("navbar", "navbar-expand", "navbar-dark", "bg-dark");
 navbar.appendChild(container);
 
 
